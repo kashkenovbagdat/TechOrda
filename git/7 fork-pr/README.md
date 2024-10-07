@@ -27,8 +27,12 @@ fork - это клонирование чужого репозитория на 
 
 ### Ответ
 
+
+
 Дополненный скрипт:
 
 ```bash
 curl -s https://stepik.org:443/api/course-lists\?page\=1 | jq --raw-output '."course-lists"[].title'
 ```
+
+https://github.com/kashkenovbagdat/fork-me/pull/1
