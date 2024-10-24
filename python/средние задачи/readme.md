@@ -19,3 +19,146 @@ s
 7.Напишите программу, которая определяет, является ли заданное число совершенным числом (число, равное сумме своих делителей, исключая само число). Выведите сообщение с результатом.
 
 8.Создайте программу, которая определяет, в какой сезон года попадает заданная дата (месяц и день). 
+
+
+
+
+number = int(input("Введите число: "))
+
+if number % 2 == 0:
+    print(f"{number} является четным числом.")
+else:
+    print(f"{number} является нечетным числом.")
+
+
+#///////////////////////////////////////
+
+s = input("Введите строку: ")
+cleaned_s = s.replace(" ","").lower()
+if cleaned_s == cleaned_s[::-1]:
+    print(f'"{s}" является палиндором.')
+else:
+    print(f'"{s}" не является палиндором.')
+
+#///////////////////////////////////////
+
+import math
+
+def is_prime(n):
+    if n < 2:
+        return False
+    for i in range(2, int(math.sqrt(n)) + 1):
+        if n % i == 0:
+            return False
+    return True
+
+# Ввод числа от пользователя
+number = int(input("Введите число: "))
+
+# # Проверка на простоту и вывод результата
+if is_prime(number):
+     print(f"{number} является простым числом.")
+else:
+     print(f"{number} не является простым числом.")
+
+#////////////////////////////////////////////////////////
+
+from datetime import datetime
+
+def is_valid_date(date_string):
+    try:
+        # Пытаемся создать объект datetime из строки
+        datetime.strptime(date_string, "%d.%m.%Y")
+        return True
+    except ValueError:
+        return False
+
+# Ввод даты от пользователя
+date_input = input("Введите дату в формате дд.мм.гггг: ")
+
+# Проверка корректности даты и вывод результата
+if is_valid_date(date_input):
+    print(f"{date_input} является корректной датой.")
+else:
+    print(f"{date_input} не является корректной датой.")
+
+#//////////////////////////////////////
+
+def is_perfect_number(n):
+    divisor_sum = sum(i for i in range(1, n) if n % i == 0)
+    return divisor_sum == n 
+
+perfect_numbers = []
+for num in range(1, 1001):
+    if is_perfect_number(num):
+        perfect_numbers.append(num)
+
+print("Совершенные числа в диапазоне от 0 до 1000: ", perfect_numbers)
+
+#////////////////////////////////////////////
+
+def is_fibonacci(n):
+    if n < 0:
+        return False
+    a, b = 0, 1
+    while a < n:
+        a, b = b, a + b
+    return a == n 
+
+# Заданное число
+number = 25
+
+# Проверка и вывод результата
+if is_fibonacci(number):
+    print(f"{number} является числом Фибоначчи.")
+else:
+    print(f"{number} не является числом Фибоначчи.")
+
+#///////////////////////////////////////////////////////////////////////
+
+
+
+def is_perfect_number(n):
+    # Считаем сумму делителей числа (исключая само число)
+    divisor_sum = sum(i for i in range(1, n) if n % i == 0)
+    # Проверяем, равна ли сумма делителей самому числу
+    return divisor_sum == n 
+
+# Ввод числа для проверки
+number = int(input("Введите число для проверки: "))
+
+# Проверка и вывод результата
+if is_perfect_number(number):
+    print(f"{number} является совершенным числом.")
+else:
+    print(f"{number} не является совершенным числом.")
+
+#////////////////////////////////////////////////////////////////////////////////////////
+
+def get_season(month, day):
+    if (month == 12 and day >= 21) or (month <= 2) or (month == 3 and day < 21):
+        return "Зима"
+    elif (month == 3 and day >= 21) or (month <= 5) or (month == 6 and day < 21):
+        return "Весна"
+    elif (month == 6 and day >= 21) or (month <= 8) or (month == 9 and day < 21):
+        return "Лето"
+    elif (month == 9 and day >= 21) or (month <= 11) or (month == 12 and day < 21):
+        return "Осень"
+    else:
+        return "Некорректная дата"
+
+# Запрос даты у пользователя
+try:
+    month = int(input("Введите месяц (1-12): "))
+    day = int(input("Введите день (1-31): "))
+
+    if 1 <= month <= 12 and 1 <= day <= 31:
+        season = get_season(month, day)
+        print(f"Дата {day}.{month} попадает в сезон: {season}.")
+    else:
+        print("Некорректный месяц или день.")
+except ValueError:
+    print("Пожалуйста, введите числовые значения для месяца и дня.")
+
+
+
