@@ -136,3 +136,141 @@ Sample Input:
 Sample Output:
 [1, 2, 3]
 
+
+def int_cmp(a, b):
+    if a > b:
+        return 1
+    elif a == b:
+        return 0
+    else:
+        return -1
+
+a, b = map(int, input().split())  
+print(int_cmp(a, b))
+#////////////////////////////////////////////////////////////////////////////////////////////////////
+
+def max_of_three(a,b,c):
+    return max(a,b,c)
+
+a, b, c = map(int, input("Введите три числа: "))
+print(max_of_three(a, b, c))
+
+#///////////////////////////////////////////////////////////////////////////////////////////////////
+
+def sqr_sum_1_n(n):
+    return (n * (n + 1) * (2 * n + 1)) // 6
+n = int(input("Введите n: "))
+print(sqr_sum_1_n(n))
+#///////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+def print_even_a_b(a, b):
+    if a % 2 != 0:
+        a += 1
+
+    for num in range(a, b + 1, 2):
+        print(num)
+
+a, b = map(int, input("Введите два числа: "))
+print_even_a_b(a, b)
+
+#///////////////////////////////////////////////////////////////////////////////////////////////////
+
+def pow_a_b(a, b):
+    result = 1
+    for _ in range(b):
+        result *=a
+    return result
+
+a, b = map(int, input("Введите два числа (остнование и степень): "))
+print(pow_a_b(a, b))
+ 
+
+ #///////////////////////////////////////////////
+def calc_deposit(b, k, n):
+    for _ in range(n):
+        b += b * (k / 100)
+    return b 
+
+b = float(input("Введите начальный баланс в тенге: "))
+k = float(input("Введите процентную ставку в процентах: "))
+n = int(input("Введите количество месяцев: "))
+
+print(f"Итоговая сумма на депозите: {calc_deposit(b, k, n):.2f} тенге")
+
+#///////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+def find_min(arr):
+    if len(arr) == 0:
+        return
+    minimum = arr[0]
+
+    for num in arr:
+        if num < minimum:
+            minimum = num
+    return minimum
+
+array = list(map(int, input("Введите числа массива: ")))
+print(find_min(array))
+
+
+#///////////////////////////////////////////////////////////////////////////////////////////////////
+
+def range_array(n):
+    return list(range(1, n + 1))
+
+n = int(input("Введите значение n: "))
+if n > 0:
+    arr = range_array(n)
+    print(" ".join(map(str, arr)))  
+else:
+    print("Значение n должно быть больше 0.")
+
+#///////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+def sum_array(arr):
+    total = 0
+    for num in arr:
+        total += num
+    return total
+
+array = list(map(int, input("Введите числа массива через пробел: ").split()))
+sum_number = sum_array(array)
+print(sum_number)
+
+
+#///////////////////////////////////////////////////////////////////////////////////////////////////
+
+def bubble_sort(arr):
+    n = len(arr)
+    
+    for i in range(n):
+    
+        for j in range(0, n - i - 1):
+    
+            if arr[j] > arr[j + 1]:
+    
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+
+
+array = list(map(int, input("Введите числа массива через пробел: ").split()))
+bubble_sort(array)
+print("Отсортированный массив:", " ".join(map(str, array)))
+
+
+#//////////////// задачи среденей сложности
+number = int(input("Введите число: "))
+
+if number % 2 == 0:
+    print(f"{number} является четным числом.")
+else:
+    print(f"{number} является нечетным числом.")
+
+
+
+
+
+
