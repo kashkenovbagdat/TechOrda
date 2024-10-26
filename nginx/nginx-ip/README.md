@@ -22,3 +22,17 @@
 ---
 
 ### Ответ
+server {
+    listen 8080;
+    server_name example.com;
+
+    location /secret_word {
+        # Возвращаем строку с статусом 203
+        return 203 "jusan-nginx-ip";
+    }
+
+    # Разрешаем доступ из сети 192.0.0.1/20, кроме 192.0.0.1
+    allow 192.0.0.0/20;
+    deny 192.0.0.1;
+    deny all;  # Запрещаем доступ всем остальным
+}
