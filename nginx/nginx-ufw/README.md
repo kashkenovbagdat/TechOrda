@@ -20,3 +20,14 @@
 ---
 
 ### Ответ
+sudo ufw allow 80
+sudo ufw allow 443
+
+sudo ufw enable
+sudo ufw status
+To                         Action      From
+--                         ------      ----
+80                         ALLOW       Anywhere
+443                        ALLOW       Anywhere
+80 (v6)                    ALLOW       Anywhere (v6)
+443 (v6)                   ALLOW       Anywhere (v6)
