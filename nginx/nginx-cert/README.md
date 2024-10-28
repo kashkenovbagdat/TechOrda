@@ -41,3 +41,34 @@ curl -H "Host: jusan.kz" -k https://localhost/secret_word
 Флаг `-k` нужен для того, чтобы `curl` не ругался на самоподписанный сертификат.
 
 ---
+ответ 
+
+ curl -H "Host: jusan.kz" -k https://localhost/secret_word
+jusan-nginx-certroot@devops:/etc/ssl#
+
+
+
+вот конфиг 
+server {
+    listen 443 ssl;
+    server_name jusan.kz;
+
+    # Укажите пути к сертификату и приватному ключу
+    ssl_certificate /etc/ssl/certs/track-devops.crt;  # Путь к сертификату
+    ssl_certificate_key /etc/ssl/private/track-devops.key;  # Путь к приватному ключу
+    ssl_dhparam /etc/ssl/private/ssl_dhparam.pem;  # Путь к файлу dhparam
+
+    location /secret_word {
+        return 201 "jusan-nginx-cert";  # Возвращаем строку с кодом 201
+    }
+}
+
+# HTTP redirect to HTTPS
+server {
+    listen 80;
+    server_name jusan.kz;
+
+    return 301 https://$host$request_uri;  # Перенаправление на HTTPS
+}
+
+
