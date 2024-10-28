@@ -25,3 +25,64 @@ curl -H "Host: example.com" http://localhost:8080/
 ---
 
 ### Ответ
+root@devops:~# curl -H "Host: example.com" http://localhost:8080/
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cats Page</title>
+</head>
+
+<body>
+    <p>
+    <h1>Cat with Flower</h1>
+    <img src="/images/flower.png" alt="flower">
+    </p>
+
+    <p>
+    <h1>Cat with Glasses</h1>
+    <img src="/images/glasses.png" alt="glasses">
+    </p>
+
+    <p>
+    <h1>Gray Cat</h1>
+    <img src="/images/gray-animal.jpeg" alt="gray-animal">
+    </p>
+
+    <p>
+    <h1>Cats mafia</h1>
+    <img src="/images/mafia.png" alt="mafia">
+    </p>
+
+    <p>
+    <h1>Sleepy Cat</h1>
+    <img src="/images/sleep.png" alt="sleep">
+    </p>
+</body>
+
+</html>root@devops:~#
+ вот конфиг файл 
+server {
+    listen 8080;
+    server_name example.com;
+
+    location / {
+        root /usr/share/nginx/html;  # Путь к вашему index.html
+        index index.html;             # Обслуживание файла index.html
+    }
+
+    location /images {
+        alias /usr/share/nginx/html/cats;  # Путь к распакованным файлам из cats.zip
+    }
+
+    location /gifs {
+        alias /usr/share/nginx/html/gifs;   # Путь к распакованным файлам из gifs.zip
+    }
+
+    location /secret_word {
+        return 201 "jusan-nginx-locations";  # Возврат строки со статусом 201
+    }
+}
