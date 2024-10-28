@@ -20,3 +20,13 @@
 ---
 
 ### Ответ
+sudo apt update
+sudo apt install nginx -y
+sudo systemctl start nginx
+sudo systemctl enable nginx
+sudo apt install ufw -y
+sudo ufw allow 80
+sudo ufw allow 443
+sudo ufw enable
+sudo ufw status
+curl http://localhost
