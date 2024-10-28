@@ -22,3 +22,22 @@
 ---
 
 ### Ответ
+server {
+    listen 8080;
+    server_name example.com;
+
+    location /secret_word {
+        return 203 "jusan-nginx-ip";
+
+        # Разрешаем доступ с 192.0.0.0/20, кроме 192.0.0.1
+        allow 192.0.0.0/20;
+        deny 192.0.0.1;
+
+        # Запрещаем доступ всем остальным
+        deny all;
+    }
+}
+curl http://192.168.168.190:8080/secret_word
+ответ выдал такой
+jusan-nginx-iproot@devops:/home/devops#
+
