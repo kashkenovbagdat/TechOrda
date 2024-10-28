@@ -10,3 +10,46 @@
 6. Учетка `design` не должна иметь доступ на другие пути, тоже самое касается других учеток.
 
 ---
+
+
+Ответ:
+конфиг
+server {
+    listen 8080;
+    server_name example.com;
+
+    # Обслуживание файла index.html для корневого пути /
+    location / {
+        root /usr/share/nginx/html;  # Путь к директории, где находится index.html
+        index index.html;
+    }
+
+    # Настройка авторизованного доступа для пути /images
+    location /images {
+        auth_basic "Приватные изображения";  # Заголовок окна авторизации
+        auth_basic_user_file /etc/nginx/conf.d/images_passwd;  # Путь к файлу паролей
+        index index.html;
+        alias /usr/share/nginx/html/images;  # Путь к директории для изображений
+    }
+
+    # Настройка авторизованного доступа для пути /gifs
+    location /gifs {
+        auth_basic "Приватные гифки";  # Заголовок окна авторизации
+        auth_basic_user_file /etc/nginx/conf.d/gifs_passwd;  # Путь к файлу паролей
+
+        alias /usr/share/nginx/html/gifs;  # Путь к директории для GIF
+    }
+
+    # Возвращение строки "jusan-nginx-locations" со статусом 201 для пути /secret_word
+    location /secret_word {
+        return 201 "jusan-nginx-locations";
+    }
+}
+
+установка пароля для design: echo "design:$(openssl passwd -1 SteveJobs1955
+design:$1$QbbtVIBI$gTFsmkPp8jrSvzLSc.6MU0
+установка пароля для marketing:  echo "marketing:$(openssl passwd -1 marketingP
+marketing:$1$NDcfdIU2$QQgdKdl4uFO/9VKWhD9gu1
+
+
+
