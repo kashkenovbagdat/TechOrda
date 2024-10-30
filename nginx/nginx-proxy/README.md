@@ -35,3 +35,8 @@ web-server: 0
 ---
 
 ### Ответ
+nano setup.sh вставил текст (linux-checker.py)
+chmod +x setup.sh
+sudo ./setup.sh
+curl http://localhost:9090/
+web-server: 0
