@@ -42,3 +42,4 @@ bash ./tester.sh
 ---
 
 ### Ответ
+https://github.com/kashkenovbagdat/TechOrda/blob/docker/docker-bind/solution.sh
