@@ -130,3 +130,6 @@ pip freeze > requirements.txt
 #### 9. Отправить изменения в github.com - `git push`.
 
 #### 10. Прислать ссылку на созданный репозиторий.
+
+
+https://github.com/kashkenovbagdat/TechOrda/blob/master/requirements.txt
