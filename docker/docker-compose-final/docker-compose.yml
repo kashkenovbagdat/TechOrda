@@ -1,0 +1,46 @@
+# version: '3.8'
+
+# services:
+#   api:
+#     image: jusan-fastapi-final:dockerized
+#     container_name: jusan-compose-final
+#     restart: always
+
+#   nginx:
+#     image: nginx:mainline
+#     container_name: jusan-nginx-final
+#     ports:
+#       - "8787:80"
+#     depends_on:
+#       - api
+#     volumes:
+#       - ./jusan-docker-mount.conf:/etc/nginx/conf.d/jusan-docker-mount.conf
+#       - ./jusan-docker-mount:/usr/share/nginx/html
+#       - ./jusan-fastapi-final.conf:/etc/nginx/conf.d/jusan-fastapi-final.conf
+#     restart: always
+networks:
+  app-network:
+    driver: bridge
+
+services:
+  api:
+    image: jusan-fastapi-final:dockerized
+    container_name: jusan-compose-final
+    networks:
+      - app-network
+    restart: always
+
+  nginx:
+    image: nginx:mainline
+    container_name: jusan-nginx-final
+    ports:
+      - "8787:80"
+    depends_on:
+      - api
+    volumes:
+      - ./jusan-docker-mount.conf:/etc/nginx/conf.d/jusan-docker-mount.conf
+      - ./jusan-docker-mount:/usr/share/nginx/html
+      - ./jusan-fastapi-final.conf:/etc/nginx/conf.d/jusan-fastapi-final.conf
+    restart: always
+    networks:
+      - app-network
